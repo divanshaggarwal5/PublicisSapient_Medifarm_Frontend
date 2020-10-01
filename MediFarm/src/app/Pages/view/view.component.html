@@ -1,0 +1,50 @@
+<h3>Medicine Data</h3>
+
+<!-- Search Bar -->
+<div>
+    <input type="text" placeholder = "Enter Medicine Name for filtering" name="FilterName" #nameFilter/>
+    <button (click)="searchMed(nameFilter.value)">Search</button>
+</div>
+
+<table *ngIf=" MedData && MedData.length>0 && (FilteredMedData==null || FilteredMedData.length==0)">
+    <tr>
+        <th>Name</th>
+        <th>Brand</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Expiry Date</th>
+    </tr>
+    <!-- [changeBgColor]="med.IsExpired" -->
+    <tr *ngFor="let med of MedData" >
+        <td>{{med.name}}</td>
+        <td>{{med.brand}}</td>
+        <td>{{med.price}}</td>
+        <td>{{med.quantity}}</td>
+        <td>{{med.expiryDate|date}}</td>
+        <td>{{med.notes}}</td>
+        <td><a [routerLink]="['viewMed',med.id]">ViewMed</a></td>
+    </tr>
+</table>
+
+<table *ngIf="FilteredMedData && FilteredMedData.length>0">
+    <tr>
+        <th>Name</th>
+        <th>Brand</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Expiry Date</th>
+    </tr>
+    <!-- changeBgColor IsExpired = "med.IsExpired" -->
+    <tr *ngFor="let med of FilteredMedData" >
+        <td>{{med.name}}</td>
+        <td>{{med.brand}}</td>
+        <td>{{med.price}}</td>
+        <td>{{med.quantity}}</td>
+        <td>{{med.expiryDate|date}}</td>
+        <td>{{med.notes}}</td>
+        <td><a [routerLink]="['viewMed',med.id]">ViewMed</a></td>
+    </tr>
+</table>
+
+<button (click)="goBack()">Back</button>
+

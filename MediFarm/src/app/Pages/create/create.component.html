@@ -1,0 +1,21 @@
+<h3>Create New Medicine</h3>
+
+{{med|json}}
+<form novalidate #newMedForm="ngForm" (ngSubmit)="onSubmit()">
+    Name : <input placeholder = "Enter Medicine Name" type="text" required minlength="5" maxlength="50" [(ngModel)]="med.Name" name="Name"/>
+    Brand : <input placeholder = "Enter Medicine Brand" type="text" required minlength="5" maxlength="50" [(ngModel)]="med.Brand" name="Brand"/>
+    Quantity : <input placeholder = "Enter Medicine Quantity" type="text" required [(ngModel)]="med.Quantity" name="Quantity"/>
+    Notes : <input placeholder = "Enter Medicine Notes" type="text" required  [(ngModel)]="med.Notes" name="Notes"/>
+    Price : <input placeholder = "Enter Medicine Price" type="text" required  [(ngModel)]="med.Price" name="Price"/>
+    <input type="submit" value="Create" [disabled]="!newMedForm.valid">
+</form>
+
+<div *ngIf="IsSuccess">
+    Form Data Saved Successfully
+</div>
+
+<div *ngIf="IsFail">
+    Error in saving Form Data
+</div>
+
+<button (click)="goBack()">GoBack</button>

@@ -1,0 +1,12 @@
+<div *ngIf="Medicine">
+    <div>
+        Name : {{Medicine.Name}}
+        Brand : {{Medicine.Brand}}
+        Price : {{Medicine.Price}}
+        Quantity : {{Medicine.Quantity}}
+        ExpiryDate : {{Medicine.ExpiryDate}}
+        Notes : {{Medicine.Notes}}
+    </div>
+</div>
+<button (click)="updateNotes()">Update Notes</button>
+<button (click)="goBack()">Back</button>
